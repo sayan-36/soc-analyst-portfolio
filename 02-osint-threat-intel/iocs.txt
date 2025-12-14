@@ -1,1 +1,8 @@
+Malicious Domains:
+- lockfileshare[.]net
+- payment-gateway-secure[.]com
+
+Command and Control IPs:
+- 91.216.248.112
+- 194.36.189.22
 
