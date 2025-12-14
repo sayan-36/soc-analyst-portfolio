@@ -1,1 +1,5 @@
+index=windows EventCode=4688
+| where ParentProcessName="*winword.exe*"
+| where ProcessName="*powershell.exe*"
+| stats count by User, ComputerName, CommandLine
 
