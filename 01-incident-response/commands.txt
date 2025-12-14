@@ -1,1 +1,17 @@
+# Host-Based Investigation Commands (Windows)
+
+# Identify malicious PowerShell execution
+Get-WinEvent -LogName Security | findstr powershell
+
+# List suspicious running processes
+tasklist | findstr /i "powershell cmd wscript"
+
+# Check persistence mechanisms
+reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+
+# Network connections
+netstat -ano | findstr ESTABLISHED
+
+# Hash malicious file
+certutil -hashfile invoice_87321.doc SHA256
 
