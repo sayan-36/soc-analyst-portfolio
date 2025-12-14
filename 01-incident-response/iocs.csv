@@ -1,1 +1,6 @@
+Indicator Type,Value,Description
+File Hash,3b7f2a9e1c9d8e1a4f2a5e9f1d0c7a6e,Ransomware Payload
+IP Address,185.203.116.42,C2 Server
+Domain,secure-docs-download[.]com,Phishing Domain
+Process,powershell.exe -enc,Encoded Command Execution
 
