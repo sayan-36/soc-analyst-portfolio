@@ -1,1 +1,16 @@
+# Ransomware Detection Logic – PowerShell Execution via Office
+
+# Detect suspicious PowerShell processes spawned by Microsoft Office applications.
+# This behavior is commonly observed in phishing-delivered ransomware campaigns.
+
+index=windows EventCode=4688
+| where ParentProcessName IN ("*winword.exe*", "*excel.exe*", "*powerpnt.exe*")
+| where ProcessName="*powershell.exe*"
+| where like(CommandLine, "%-enc%") OR like(CommandLine, "%FromBase64String%")
+| eval DetectionReason="Office spawning encoded PowerShell"
+| stats count 
+    min(_time) as first_seen 
+    max(_time) as last_seen 
+    by User, ComputerName, ParentProcessName, ProcessName, CommandLine, DetectionReason
+| sort - count
 
